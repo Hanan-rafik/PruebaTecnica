@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import { fakeLogin } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 interface LoginFormData {
   email: string;
@@ -12,13 +13,16 @@ interface LoginFormData {
 const Login: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await axios.post('http://localhost:5174/api/login', data);
-      login(response.data.token);
+      const response = await fakeLogin(data.email, data.password);
+      login((response as { token: string }).token); // Almacena el token en el contexto
+      navigate('/'); // Redirige al usuario a la página de inicio
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', (error as Error).message);
+      alert('Credenciales incorrectas');
     }
   };
 
