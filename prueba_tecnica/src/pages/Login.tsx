@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Link } from '@mui/material';
 import { useAuth } from '../context/AuthContext';
 import { fakeLogin } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
@@ -18,8 +18,8 @@ const Login: React.FC = () => {
   const onSubmit = async (data: LoginFormData) => {
     try {
       const response = await fakeLogin(data.email, data.password);
-      login((response as { token: string }).token); // Almacena el token en el contexto
-      navigate('/'); // Redirige al usuario a la página de inicio
+      login((response as { token: string }).token);
+      navigate('/'); 
     } catch (error) {
       console.error('Error:', (error as Error).message);
       alert('Credenciales incorrectas');
@@ -53,6 +53,14 @@ const Login: React.FC = () => {
           <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
             Iniciar Sesión
           </Button>
+          <Box sx={{ mt: 2, textAlign: 'center' }}>
+            <Typography variant="body2">
+              ¿No tienes una cuenta?{' '}
+              <Link href="/register" underline="hover">
+                Regístrate
+              </Link>
+            </Typography>
+          </Box>
         </form>
       </Box>
     </Container>

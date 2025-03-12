@@ -1,8 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TextField, Button, Container, Typography, Box } from '@mui/material';
-import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import { TextField, Button, Container, Typography, Box, Link } from '@mui/material';
+import { fakeRegister } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 
 interface RegisterFormData {
@@ -13,7 +12,6 @@ interface RegisterFormData {
 
 const Register: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<RegisterFormData>();
-  const { login } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = async (data: RegisterFormData) => {
@@ -23,14 +21,12 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5174/api/register', {
-        email: data.email,
-        password: data.password,
-      });
-      login(response.data.token); // Almacena el token en el contexto
-      navigate('/'); // Redirige al usuario a la página de inicio
+      await fakeRegister(data.email, data.password);
+      alert('Registro exitoso. Por favor, inicia sesión.'); 
+      navigate('/login'); 
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', (error as Error).message);
+      alert('El usuario ya existe');
     }
   };
 
@@ -70,6 +66,14 @@ const Register: React.FC = () => {
           <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
             Registrarse
           </Button>
+          <Box sx={{ mt: 2, textAlign: 'center' }}>
+            <Typography variant="body2">
+              ¿Ya tienes una cuenta?{' '}
+              <Link href="/login" underline="hover">
+                Inicia Sesión
+              </Link>
+            </Typography>
+          </Box>
         </form>
       </Box>
     </Container>

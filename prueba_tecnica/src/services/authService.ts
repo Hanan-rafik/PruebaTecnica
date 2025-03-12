@@ -6,12 +6,12 @@ const users = [
     },
   ];
   
- 
+
   const generateFakeToken = (email: string) => {
     return `fake-jwt-token-for-${email}`;
   };
   
-  
+
   export const fakeLogin = async (email: string, password: string) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -25,7 +25,7 @@ const users = [
     });
   };
   
-  
+ 
   export const fakeRegister = async (email: string, password: string) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
