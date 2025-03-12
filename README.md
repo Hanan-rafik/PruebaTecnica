@@ -1,48 +1,60 @@
-El proyecto está diseñado con una estructura de frontend y backend simulado, lo que significa que no hay un servidor real manejando datos. En su lugar, la autenticación y los usuarios se gestionan dentro del frontend para demostrar cómo funcionaría una aplicación con login y registro.
+# Proyecto con Autenticación Simulada  
 
-Tecnologías Usadas:
-Frontend (Interfaz de Usuario)
-React: Para construir la interfaz de la aplicación.
-Vite: Hace que el desarrollo sea más rápido.
-TypeScript: Agrega seguridad al código.
-Material-UI (MUI): Proporciona botones y otros elementos de diseño ya hechos.
-TailwindCSS: Ayuda a personalizar los estilos de manera rápida.
-React Router: Maneja la navegación entre pantallas.
-React Hook Form: Facilita la validación y manejo de formularios.
-Estructura del Proyecto:
+El proyecto está estructurado con una arquitectura de frontend y un backend simulado. No hay un backend real, pero la autenticación y el manejo de usuarios se simulan en el frontend para mostrar cómo funciona una aplicación con login y registro.  
+
+---
+
+## 🖥️ Tecnologías Usadas  
+
+### **Frontend (Interfaz de Usuario)**  
+- **React**: Biblioteca para construir la interfaz de usuario.  
+- **Vite**: Herramienta para un desarrollo más rápido.  
+- **TypeScript**: Añade seguridad con tipado estático.  
+- **Material-UI (MUI)**: Componentes de UI preconstruidos.  
+- **TailwindCSS**: Framework CSS para estilos rápidos y personalizados.  
+- **React Router**: Maneja la navegación entre páginas.  
+- **React Hook Form**: Facilita el manejo de formularios y validaciones.  
+
+---
+
+## 📂 Estructura del Proyecto  
+
+📂 src/ ├── components/ # Componentes reutilizables (ej: PrivateRoute) ├── pages/ # Páginas de la aplicación (Login, Register, Home) ├── context/ # Contexto de autenticación (manejo del estado global) ├── services/ # Lógica para simular llamadas API (authService.ts) ├── App.tsx # Componente principal que define las rutas ├── main.tsx # Punto de entrada de la aplicación └── index.css # Estilos globales de TailwindCSS
 
 
 
-📂 src/
-├── components/ → Partes reutilizables, como la protección de rutas.
-├── pages/ → Las pantallas principales (Login, Registro, Inicio).
-├── context/ → Guarda la información de autenticación.
-├── services/ → Simula las llamadas a un backend.
-├── App.tsx → Configura las rutas principales.
-├── main.tsx → Punto de inicio de la app.
-└── index.css → Estilos globales.
 
-Backend Simulado
-No hay un servidor real, pero se usa un archivo llamado authService.ts para simular el proceso de autenticación.
-Los usuarios se almacenan en una lista dentro del frontend.
-Se genera un token JWT falso cuando alguien inicia sesión.
-Decisiones Técnicas
-✅ Autenticación con Context API → Se usa Context API porque es más simple que Redux o Zustand para una app pequeña.
-✅ Protección de Rutas → Solo los usuarios con sesión iniciada pueden acceder a ciertas páginas.
-✅ Validación de Formularios → Se usa React Hook Form para asegurarse de que los datos sean correctos (ej: email válido, contraseñas que coincidan).
-✅ Estilos → Se combinan MUI para los componentes y TailwindCSS para personalizar los estilos.
-✅ Navegación → Se usa React Router para cambiar entre pantallas.
+---
 
-Cómo Funciona la App
-🔹 Registro
+## ⚙️ Backend Simulado  
+- **No hay un servidor real**, pero se usa un archivo `authService.ts` para simular la autenticación.  
+- Los usuarios se almacenan en **un array en memoria**.  
+- Se genera un **token JWT falso** al iniciar sesión.  
 
-El usuario ingresa su email y contraseña.
-Si los datos son válidos, se guarda el usuario y se le envía a la pantalla de Login.
-🔹 Login
+---
 
-El usuario escribe su email y contraseña.
-Si son correctos, se guarda un "token falso" y el usuario entra a la página de inicio.
-🔹 Página de Inicio
+## 📌 Decisiones Técnicas  
 
-Solo se puede ver si el usuario está autenticado.
-Si no ha iniciado sesión, lo envía a la pantalla de Login.
+✅ **Autenticación con Context API** → Se usa Context API porque es más simple que Redux o Zustand para una app pequeña.  
+✅ **Protección de Rutas** → Solo los usuarios autenticados pueden acceder a ciertas páginas.  
+✅ **Validación de Formularios** → Se usa React Hook Form para validar datos (ej: email válido, coincidencia de contraseñas).  
+✅ **Estilos** → Se combinan **MUI** para componentes y **TailwindCSS** para personalización.  
+✅ **Navegación** → Se usa React Router para cambiar entre páginas.  
+
+---
+
+## 🔄 Flujo de la Aplicación  
+
+### 🔹 **Registro**  
+1. El usuario ingresa su email y contraseña.  
+2. Si los datos son válidos, se guarda el usuario y se redirige a la pantalla de Login.  
+
+### 🔹 **Login**  
+1. El usuario ingresa su email y contraseña.  
+2. Si son correctos, se genera un "token JWT falso" y entra a la página de inicio.  
+
+### 🔹 **home**  
+- Solo se puede ver si el usuario está autenticado.  
+- Si no ha iniciado sesión, es redirigido a la pantalla de Login.  
+
+
