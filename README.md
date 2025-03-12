@@ -9,7 +9,9 @@ Material-UI (MUI): Proporciona botones y otros elementos de diseño ya hechos.
 TailwindCSS: Ayuda a personalizar los estilos de manera rápida.
 React Router: Maneja la navegación entre pantallas.
 React Hook Form: Facilita la validación y manejo de formularios.
-Estructura del Proyecto
+Estructura del Proyecto:
+
+
 📂 src/
 ├── components/ → Partes reutilizables, como la protección de rutas.
 ├── pages/ → Las pantallas principales (Login, Registro, Inicio).
