@@ -19,7 +19,16 @@ El proyecto está estructurado con una arquitectura de frontend y un backend sim
 
 ## 📂 Estructura del Proyecto  
 
-📂 src/ ├── components/ # Componentes reutilizables (ej: PrivateRoute) ├── pages/ # Páginas de la aplicación (Login, Register, Home) ├── context/ # Contexto de autenticación (manejo del estado global) ├── services/ # Lógica para simular llamadas API (authService.ts) ├── App.tsx # Componente principal que define las rutas ├── main.tsx # Punto de entrada de la aplicación └── index.css # Estilos globales de TailwindCSS
+```plaintext
+src/
+├── components/         # Componentes reutilizables (ej: PrivateRoute)
+├── pages/              # Páginas de la aplicación (Login, Register, Home)
+├── context/            # Contexto de autenticación (manejo del estado global)
+├── services/           # Lógica para simular llamadas API (authService.ts)
+├── App.tsx             # Componente principal que define las rutas
+├── main.tsx            # Punto de entrada de la aplicación
+└── index.css           # Estilos globales de TailwindCSS
+
 
 
 
