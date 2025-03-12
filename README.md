@@ -10,8 +10,7 @@ El proyecto está estructurado con una arquitectura de frontend y un backend sim
 - **React**: Biblioteca para construir la interfaz de usuario.  
 - **Vite**: Herramienta para un desarrollo más rápido.  
 - **TypeScript**: Añade seguridad con tipado estático.  
-- **Material-UI (MUI)**: Componentes de UI preconstruidos.  
-- **TailwindCSS**: Framework CSS para estilos rápidos y personalizados.  
+- **Material-UI (MUI)**: Componentes de UI preconstruidos.   
 - **React Router**: Maneja la navegación entre páginas.  
 - **React Hook Form**: Facilita el manejo de formularios y validaciones.  
 
