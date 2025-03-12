@@ -1,6 +1,6 @@
 El proyecto está diseñado con una estructura de frontend y backend simulado, lo que significa que no hay un servidor real manejando datos. En su lugar, la autenticación y los usuarios se gestionan dentro del frontend para demostrar cómo funcionaría una aplicación con login y registro.
 
-Tecnologías Usadas
+Tecnologías Usadas:
 Frontend (Interfaz de Usuario)
 React: Para construir la interfaz de la aplicación.
 Vite: Hace que el desarrollo sea más rápido.
