@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { TextField, Button, Container, Typography, Box, Link } from '@mui/material';
+import { TextField, Button, Container, Typography, Box, Link, Paper } from '@mui/material';
 import { fakeRegister } from '../services/authService';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,61 +22,60 @@ const Register: React.FC = () => {
 
     try {
       await fakeRegister(data.email, data.password);
-      alert('Registro exitoso. Por favor, inicia sesión.'); 
-      navigate('/login'); 
+      alert('Registro exitoso. Inicia sesión.');
+      navigate('/login');
     } catch (error) {
-      console.error('Error:', (error as Error).message);
       alert('El usuario ya existe');
     }
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ mt: 4 }}>
-        <Typography variant="h4" align="center" gutterBottom>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-500 to-teal-700">
+      <Paper elevation={6} className="p-8 w-full max-w-md bg-white rounded-2xl shadow-lg">
+        <Typography variant="h4" className="text-center text-green-600 font-bold">
           Registro
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5">
           <TextField
             fullWidth
             label="Email"
+            variant="outlined"
             {...register('email', { required: 'Email es requerido', pattern: { value: /^\S+@\S+$/i, message: 'Email no válido' } })}
             error={!!errors.email}
             helperText={errors.email?.message}
-            margin="normal"
           />
           <TextField
             fullWidth
             label="Contraseña"
             type="password"
+            variant="outlined"
             {...register('password', { required: 'Contraseña es requerida', minLength: { value: 6, message: 'Mínimo 6 caracteres' } })}
             error={!!errors.password}
             helperText={errors.password?.message}
-            margin="normal"
           />
           <TextField
             fullWidth
             label="Confirmar Contraseña"
             type="password"
+            variant="outlined"
             {...register('confirmPassword', { required: 'Confirma tu contraseña' })}
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
-            margin="normal"
           />
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+          <Button type="submit" variant="contained" color="success" fullWidth className="py-3 text-lg transition-transform transform hover:scale-105">
             Registrarse
           </Button>
-          <Box sx={{ mt: 2, textAlign: 'center' }}>
-            <Typography variant="body2">
-              ¿Ya tienes una cuenta?{' '}
-              <Link href="/login" underline="hover">
-                Inicia Sesión
-              </Link>
-            </Typography>
-          </Box>
         </form>
-      </Box>
-    </Container>
+        <Box className="mt-6 text-center">
+          <Typography variant="body2">
+            ¿Ya tienes cuenta?{' '}
+            <Link href="/login" underline="hover" className="text-green-500 hover:text-green-700">
+              Inicia Sesión
+            </Link>
+          </Typography>
+        </Box>
+      </Paper>
+    </div>
   );
 };
 
